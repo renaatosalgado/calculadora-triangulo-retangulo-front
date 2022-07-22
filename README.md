@@ -11,6 +11,19 @@ O usuário deve inserir as medidas de 2 lados do triângulo, e desse modo recebe
 - Perímetro
 - Àrea
 
+## Como rodar o projeto
+
+1. Clone este repositório
+2. Instale as dependências
+```bash
+npm i
+```
+3. Rode o servidor localmente
+```bash
+npm start
+```
+4. Navegue pelo site que será aberto em seu navagador favorito!
+
 ## Tecnologias utilizadas
 
 <div align="start" style="margin: auto" >
