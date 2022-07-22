@@ -1,19 +1,20 @@
 import {
-  CardMedia,
+  Button,
   Container,
   Grid,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Stack,
+  TextField,
   Typography,
 } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import React from "react";
+import React, { useState } from "react";
 import triangle from "../assets/images/right-tri.png";
 import formulas from "../assets/images/formulas.png";
 import subtitles from "../assets/images/subtitle.png";
+import Card from "../components/Card";
 
 export default function Home() {
   const bullets = [
@@ -22,9 +23,27 @@ export default function Home() {
     "Os comprimentos dos lados podem ser determinados usando o Teorema de Pitágoras, os tamanhos dos ângulos usando as funções trigonométricas.",
   ];
 
+  const [data, setData] = useState({
+    a: "",
+    b: "",
+    c: "",
+    p: "",
+    area: "",
+  });
+
+  function handleInputChange(e) {
+    setData({ ...data, [e.target.name]: e.target.value });
+    console.log(data);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(data);
+  }
+
   return (
     <>
-      <Container maxWidth="md" sx={{ border: "1px solid #000" }}>
+      <Container maxWidth="md">
         <Typography
           component="h1"
           variant="h3"
@@ -46,27 +65,71 @@ export default function Home() {
         </List>
         <Grid container direction="row" justifyContent="center" sx={{ mt: 2 }}>
           <Grid item>
-            <CardMedia
-              component="img"
-              image={triangle}
-              sx={{ maxWidth: "300px" }}
-            />
+            <Card imageLink={triangle} width={300} />
           </Grid>
 
           <Grid item>
-            <CardMedia
-              component="img"
-              image={formulas}
-              sx={{ maxWidth: "300px" }}
-            />
+            <Card imageLink={formulas} width={300} />
           </Grid>
         </Grid>
+
         <Grid container justifyContent="center" sx={{ mt: 2 }}>
-          <CardMedia
-            component="img"
-            image={subtitles}
-            sx={{ maxWidth: "400px" }}
-          />
+          <Card imageLink={subtitles} width={400} />
+        </Grid>
+
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          component="form"
+          onSubmit={handleSubmit}
+          direction="column"
+        >
+          <Grid item>
+            <TextField
+              margin="normal"
+              sx={{ maxWidth: "300px" }}
+              label="Lado 'a'"
+              name="a"
+              type="number"
+              onChange={handleInputChange}
+              value={data.a}
+            />
+          </Grid>
+
+          <Grid>
+            <TextField
+              margin="normal"
+              sx={{ maxWidth: "300px" }}
+              label="Lado 'b'"
+              name="b"
+              type="number"
+              onChange={handleInputChange}
+              value={data.b}
+            />
+          </Grid>
+
+          <Grid>
+            <TextField
+              margin="normal"
+              sx={{ maxWidth: "300px" }}
+              label="Lado 'c'"
+              name="c"
+              type="number"
+              onChange={handleInputChange}
+              value={data.c}
+            />
+          </Grid>
+
+          <Grid>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Calcular
+            </Button>
+          </Grid>
         </Grid>
       </Container>
     </>
