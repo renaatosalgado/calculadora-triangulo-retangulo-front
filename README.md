@@ -11,7 +11,7 @@ O usuário deve inserir as medidas de 2 lados do triângulo, e desse modo recebe
 - Perímetro
 - Àrea
 
-##Tecnologias utilizadas
+## Tecnologias utilizadas
 
 <div align="start" style="margin: auto" >
     <a href="https://www.linkedin.com/in/renato-salgado-dias/">
