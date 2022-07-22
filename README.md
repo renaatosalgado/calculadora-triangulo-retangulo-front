@@ -18,7 +18,7 @@ O usuário deve inserir as medidas de 2 lados do triângulo, e desse modo recebe
 ```bash
 npm i
 ```
-3. Rode o servidor localmente
+3. Rode o projeto localmente
 ```bash
 npm start
 ```
