@@ -3,7 +3,7 @@
 Este projeto também está disponível em https://calculadora-triangulo-retangulo.vercel.app/
 
 A aplicação se trata de uma calculadora de triângulos retângulos!
-O usuário deve as medidas de 2 lados do triângulo, e desse modo receber as todas as informações pertinentes:
+O usuário deve inserir as medidas de 2 lados do triângulo, e desse modo receber as todas as informações pertinentes:
 
 - Lado a
 - Lado b
@@ -11,7 +11,7 @@ O usuário deve as medidas de 2 lados do triângulo, e desse modo receber as tod
 - Perímetro
 - Àrea
 
-Tecnologias utilizadas
+##Tecnologias utilizadas
 
 <div align="start" style="margin: auto" >
     <a href="https://www.linkedin.com/in/renato-salgado-dias/">
