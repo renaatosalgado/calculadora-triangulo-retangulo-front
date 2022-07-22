@@ -9,12 +9,14 @@ import {
   Typography,
 } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import React from "react";
+import React, { useContext } from "react";
 import triangle from "../assets/images/right-tri.png";
 import formulas from "../assets/images/formulas.png";
 import subtitles from "../assets/images/subtitle.png";
 import Card from "../components/Card";
 import Inputs from "../components/Inputs";
+import DataContext from "../contexts/dataContext";
+import Results from "../components/Results";
 
 export default function Home() {
   const bullets = [
@@ -22,6 +24,8 @@ export default function Home() {
     "A soma dos ângulos do triângulo é 180°, e vale o seguinte: α + β = 90°.",
     "Os comprimentos dos lados podem ser determinados usando o Teorema de Pitágoras, os tamanhos dos ângulos usando as funções trigonométricas.",
   ];
+
+  const [hasResults, setHasResults] = useContext(DataContext);
 
   return (
     <>

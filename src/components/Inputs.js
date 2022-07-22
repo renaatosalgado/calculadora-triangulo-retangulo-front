@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
+import DataContext from "../contexts/dataContext";
+import Results from "./Results";
 
 export default function Inputs({ title }) {
+
   const initialData = {
     a: "",
     b: "",
@@ -9,7 +12,9 @@ export default function Inputs({ title }) {
     p: "",
     area: "",
   };
+
   const [data, setData] = useState(initialData);
+  const [hasResults, setHasResults] = useContext(DataContext);
 
   function handleInputChange(e) {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -18,16 +23,16 @@ export default function Inputs({ title }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (data.a && data.b && data.c) {
-      alert("Insira apenas 2 valores!");
+    if ((data.a && data.b && data.c) || (!data.a && !data.b && !data.c)) {
+      alert("Insira 2 valores!");
       setData(initialData);
+      return;
     } else {
       calculateSides();
+      calculatePerimeter();
+      calculareArea();
     }
-
-    calculatePerimeter();
-    calculareArea();
-    console.log({ data });
+    setHasResults(true);
   }
 
   function calculateSides() {
@@ -49,55 +54,61 @@ export default function Inputs({ title }) {
   }
 
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-      component="form"
-      onSubmit={handleSubmit}
-      direction="column"
-    >
-      <Typography sx={{ m: 1, fontSize: 24, color: "secondary.main" }}>
-        {title}
-      </Typography>
-      <Grid item>
-        <TextField
-          margin="normal"
-          label="Lado 'a'"
-          name="a"
-          type="number"
-          onChange={handleInputChange}
-          value={data.a}
-        />
-      </Grid>
+    <>
+      {hasResults ? (
+        <Results data={data} title="Resultados" />
+      ) : (
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          component="form"
+          onSubmit={handleSubmit}
+          direction="column"
+        >
+          <Typography sx={{ m: 1, fontSize: 24, color: "secondary.main" }}>
+            {title}
+          </Typography>
+          <Grid item>
+            <TextField
+              margin="normal"
+              label="Lado 'a'"
+              name="a"
+              type="number"
+              onChange={handleInputChange}
+              value={data.a}
+            />
+          </Grid>
 
-      <Grid>
-        <TextField
-          margin="normal"
-          label="Lado 'b'"
-          name="b"
-          type="number"
-          onChange={handleInputChange}
-          value={data.b}
-        />
-      </Grid>
+          <Grid>
+            <TextField
+              margin="normal"
+              label="Lado 'b'"
+              name="b"
+              type="number"
+              onChange={handleInputChange}
+              value={data.b}
+            />
+          </Grid>
 
-      <Grid>
-        <TextField
-          margin="normal"
-          label="Lado 'c'"
-          name="c"
-          type="number"
-          onChange={handleInputChange}
-          value={data.c}
-        />
-      </Grid>
+          <Grid>
+            <TextField
+              margin="normal"
+              label="Lado 'c'"
+              name="c"
+              type="number"
+              onChange={handleInputChange}
+              value={data.c}
+            />
+          </Grid>
 
-      <Grid>
-        <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
-          Calcular
-        </Button>
-      </Grid>
-    </Grid>
+          <Grid>
+            <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
+              Calcular
+            </Button>
+          </Grid>
+        </Grid>
+      )}
+    </>
   );
 }

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme, CssBaseline } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import DataContext from "./contexts/dataContext";
 
 function App() {
   const theme = createTheme({
@@ -13,18 +14,21 @@ function App() {
       secondary: {
         main: "#1976d2",
       },
-      background: { default: "#FAFAFA", paper: "#FAFAFA" },
     },
   });
+
+  const [hasResults, setHasResults] = useState(null);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
+      <DataContext.Provider value={[hasResults, setHasResults]}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </DataContext.Provider>
     </ThemeProvider>
   );
 }
