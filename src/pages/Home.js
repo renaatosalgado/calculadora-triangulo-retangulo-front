@@ -61,7 +61,7 @@ export default function Home() {
 
         <Divider sx={{ m: 2 }} />
 
-        <Inputs title="Insira 2 valores" />
+        <Inputs title="Insira 2 valores, na mesma unidade" />
       </Container>
     </>
   );

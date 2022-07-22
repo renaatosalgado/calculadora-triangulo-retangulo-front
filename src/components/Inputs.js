@@ -21,18 +21,33 @@ export default function Inputs({ title }) {
     if (data.a && data.b && data.c) {
       alert("Insira apenas 2 valores!");
       setData(initialData);
-    } else if (data.a && data.c) {
+    } else {
+      calculateSides();
+    }
+
+    calculatePerimeter();
+    calculareArea();
+    console.log({ data });
+  }
+
+  function calculateSides() {
+    if (data.a && data.c) {
       data.b = Math.sqrt(Number(data.c) ** 2 - Number(data.a) ** 2);
     } else if (data.b && data.c) {
       data.a = Math.sqrt(Number(data.c) ** 2 - Number(data.b) ** 2);
     } else {
       data.c = Math.sqrt(Number(data.a) ** 2 + Number(data.b) ** 2);
     }
-
-    data.p = Number(data.a) + Number(data.b) + Number(data.c);
-    data.area = (data.a * data.b) / 2;
-    console.log({ data });
   }
+
+  function calculatePerimeter() {
+    data.p = Number(data.a) + Number(data.b) + Number(data.c);
+  }
+
+  function calculareArea() {
+    data.area = (data.a * data.b) / 2;
+  }
+
   return (
     <Grid
       container
