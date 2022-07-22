@@ -22,7 +22,13 @@ export default function Inputs({ title }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if ((data.a && data.b && data.c) || (!data.a && !data.b && !data.c)) {
+    if (
+      (data.a && data.b && data.c) ||
+      (!data.a && !data.b && !data.c) ||
+      (data.a && !data.b && !data.c) ||
+      (!data.a && data.b && !data.c) ||
+      (!data.a && !data.b && data.c)
+    ) {
       alert("Insira 2 valores!");
       setData(initialData);
       return;
