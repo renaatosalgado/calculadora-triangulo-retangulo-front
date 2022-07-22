@@ -1,1 +1,1 @@
-To be done :)
+# Teste Técnico - Cromai - Calculadora de Triângulo Retângulo

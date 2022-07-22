@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import DataContext from "../contexts/dataContext";
 import Results from "./Results";
 
 export default function Inputs({ title }) {
-
   const initialData = {
     a: "",
     b: "",

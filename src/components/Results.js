@@ -14,8 +14,6 @@ export default function Results({ data, title }) {
 
   const dataValues = Object.entries(data);
 
-  console.log(dataValues);
-
   function newCalc() {
     setHasResults(false);
   }

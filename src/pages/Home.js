@@ -9,14 +9,13 @@ import {
   Typography,
 } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import React, { useContext } from "react";
+import React from "react";
 import triangle from "../assets/images/right-tri.png";
 import formulas from "../assets/images/formulas.png";
 import subtitles from "../assets/images/subtitle.png";
 import Card from "../components/Card";
 import Inputs from "../components/Inputs";
-import DataContext from "../contexts/dataContext";
-import Results from "../components/Results";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const bullets = [
@@ -24,8 +23,6 @@ export default function Home() {
     "A soma dos ângulos do triângulo é 180°, e vale o seguinte: α + β = 90°.",
     "Os comprimentos dos lados podem ser determinados usando o Teorema de Pitágoras, os tamanhos dos ângulos usando as funções trigonométricas.",
   ];
-
-  const [hasResults, setHasResults] = useContext(DataContext);
 
   return (
     <>
@@ -36,6 +33,7 @@ export default function Home() {
           align="center"
           color="primary"
           fontFamily="Permanent marker"
+          sx={{ m: 3 }}
         >
           Calculadora de Triângulo Retângulo
         </Typography>
@@ -67,6 +65,7 @@ export default function Home() {
 
         <Inputs title="Insira 2 valores, na mesma unidade" />
       </Container>
+      <Footer />
     </>
   );
 }
