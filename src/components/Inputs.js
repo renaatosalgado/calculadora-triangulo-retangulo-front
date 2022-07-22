@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 
 export default function Inputs({ title }) {
-  const [data, setData] = useState({
+  const initialData = {
     a: "",
     b: "",
     c: "",
     p: "",
     area: "",
-  });
+  };
+  const [data, setData] = useState(initialData);
 
   function handleInputChange(e) {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -16,7 +17,21 @@ export default function Inputs({ title }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(data);
+
+    if (data.a && data.b && data.c) {
+      alert("Insira apenas 2 valores!");
+      setData(initialData);
+    } else if (data.a && data.c) {
+      data.b = Math.sqrt(Number(data.c) ** 2 - Number(data.a) ** 2);
+    } else if (data.b && data.c) {
+      data.a = Math.sqrt(Number(data.c) ** 2 - Number(data.b) ** 2);
+    } else {
+      data.c = Math.sqrt(Number(data.a) ** 2 + Number(data.b) ** 2);
+    }
+
+    data.p = Number(data.a) + Number(data.b) + Number(data.c);
+    data.area = (data.a * data.b) / 2;
+    console.log({ data });
   }
   return (
     <Grid
