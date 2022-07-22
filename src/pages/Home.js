@@ -1,20 +1,20 @@
 import {
-  Button,
   Container,
+  Divider,
   Grid,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  TextField,
   Typography,
 } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import React, { useState } from "react";
+import React from "react";
 import triangle from "../assets/images/right-tri.png";
 import formulas from "../assets/images/formulas.png";
 import subtitles from "../assets/images/subtitle.png";
 import Card from "../components/Card";
+import Inputs from "../components/Inputs";
 
 export default function Home() {
   const bullets = [
@@ -22,24 +22,6 @@ export default function Home() {
     "A soma dos ângulos do triângulo é 180°, e vale o seguinte: α + β = 90°.",
     "Os comprimentos dos lados podem ser determinados usando o Teorema de Pitágoras, os tamanhos dos ângulos usando as funções trigonométricas.",
   ];
-
-  const [data, setData] = useState({
-    a: "",
-    b: "",
-    c: "",
-    p: "",
-    area: "",
-  });
-
-  function handleInputChange(e) {
-    setData({ ...data, [e.target.name]: e.target.value });
-    console.log(data);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(data);
-  }
 
   return (
     <>
@@ -77,60 +59,9 @@ export default function Home() {
           <Card imageLink={subtitles} width={400} />
         </Grid>
 
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="center"
-          component="form"
-          onSubmit={handleSubmit}
-          direction="column"
-        >
-          <Grid item>
-            <TextField
-              margin="normal"
-              sx={{ maxWidth: "300px" }}
-              label="Lado 'a'"
-              name="a"
-              type="number"
-              onChange={handleInputChange}
-              value={data.a}
-            />
-          </Grid>
+        <Divider sx={{ m: 2 }} />
 
-          <Grid>
-            <TextField
-              margin="normal"
-              sx={{ maxWidth: "300px" }}
-              label="Lado 'b'"
-              name="b"
-              type="number"
-              onChange={handleInputChange}
-              value={data.b}
-            />
-          </Grid>
-
-          <Grid>
-            <TextField
-              margin="normal"
-              sx={{ maxWidth: "300px" }}
-              label="Lado 'c'"
-              name="c"
-              type="number"
-              onChange={handleInputChange}
-              value={data.c}
-            />
-          </Grid>
-
-          <Grid>
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Calcular
-            </Button>
-          </Grid>
-        </Grid>
+        <Inputs title="Insira 2 valores" />
       </Container>
     </>
   );
